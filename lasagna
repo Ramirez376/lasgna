@@ -1,0 +1,27 @@
+function calcularTiempo() {
+    // Obtener valores de los inputs
+    const capas = parseInt(document.getElementById("capas").value);
+    const tiempoHorno = parseInt(document.getElementById("tiempoHorno").value);
+
+    // Validar datos
+    if (isNaN(capas) || capas < 1 || isNaN(tiempoHorno) || tiempoHorno < 0) {
+        alert("Por favor, ingresa valores numéricos válidos.");
+        return;
+    }
+
+    // Constante de tiempo de cocción estándar
+    const TIEMPO_COCCION_ESTANDAR = 40;
+
+    // Calcular tiempos
+    const tiempoPreparacion = capas * 2;
+    const tiempoRestanteHorno = TIEMPO_COCCION_ESTANDAR - tiempoHorno;
+    const tiempoTotal = tiempoPreparacion + TIEMPO_COCCION_ESTANDAR;
+
+    // Mostrar resultados
+    const resultado = document.getElementById("resultado");
+    resultado.textContent = `
+        Tiempo restante en el horno: ${tiempoRestanteHorno} minutos.
+        Tiempo total de preparación: ${tiempoPreparacion} minutos.
+        Tiempo total de trabajo: ${tiempoTotal} minutos.
+    `;
+}
